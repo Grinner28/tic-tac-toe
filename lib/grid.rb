@@ -1,10 +1,13 @@
 require_relative 'cell.rb'
 
-class Gameboard < Cell
+class Gamegrid < Cell
+  attr_reader :gamegrid
+
   def initialize
-    @gameboard = []
-    9.times { @gameboard.push(Cell.new(@gameboard.length)) }
-    p @gameboard
+    super
+    @gamegrid = []
+    9.times { @gamegrid.push(Cell.new) }
+    p @gamegrid
   end
 end
 

@@ -1,5 +1,10 @@
 class Cell
-  def initialize(space)
-      @space = space +1 
+
+  attr_accessor :spacenumber
+
+  @@spacenumber = 0
+  def initialize()
+      @spacenumber = @@spacenumber
+      @@spacenumber += 1 
   end
 end
