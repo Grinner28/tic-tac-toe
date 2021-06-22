@@ -1,5 +1,5 @@
 class Cell
-  def initialize
-      @value = 1
+  def initialize(space)
+      @space = space +1 
   end
 end
