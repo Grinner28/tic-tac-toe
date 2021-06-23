@@ -1,13 +1,12 @@
 require_relative 'grid'
 
-class Display < Gamegrid
+class Display < Board
+  attr_accessor :display_array
   def initialize  
-  @display_array = Gamegrid.new
+    @display_array = Board.new
   end
 end
 
 display = Display.new
-puts display
-p display
 
-puts display.board.fetch(1)
+puts display.display_array.board[1][1]

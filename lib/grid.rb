@@ -8,5 +8,4 @@ class Board < Cell
   end
 end
 
-grid = board.new
-p grid.board
+
