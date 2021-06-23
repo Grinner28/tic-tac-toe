@@ -1,14 +1,12 @@
-require_relative 'cell.rb'
+require_relative 'cell'
 
-class Gamegrid < Cell
-  attr_reader :gamegrid
+class Board < Cell
+  attr_accessor :board
 
   def initialize
-    super
-    @gamegrid = []
-    9.times { @gamegrid.push(Cell.new) }
-    p @gamegrid
+    @board = Array.new(3) { Array.new(3) { Cell.new } }
   end
 end
 
-
+grid = board.new
+p grid.board
