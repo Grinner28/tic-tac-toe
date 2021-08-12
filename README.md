@@ -8,6 +8,24 @@ A 3x3 grid is display
  >>Need a display function that takes the current state of the board array and displays it in a 3x3 grid
  >> Grid spaces are numbered 1-9
 
+Inital setup
+>>Display a welcome message
+>>Ask if game will be 1 or 2 human players?
+>>If 2 players
+    >>Prompt please enter player 1s name and create player with said name
+    >>Prompt please enter player 2s name and create player with said name
+ 
+ >> If 1 human player
+    >>Prompt please enter your name and create player with said name
+    >>Create computer player
+
+>>Assigning first and second player
+    >>Randomly select who will go first
+    >>Assign first player the symbol X
+    >>Assign second player the symbol O
+    >>Set first as current player
+      
+
 Two players take it in turns to select an avaiable space
   >> Player one is always a person
   >> Need to prompt for the number of human players
@@ -20,14 +38,13 @@ Two players take it in turns to select an avaiable space
 
 Grid selection by human
   >> Prompt player to enter which square they want to select by entering its resepctive number
-  >> 
+  >> Check that the grid space is not already occupied by a player
+  >> If grid is not already occupied chages the number to the players symbol
+  >> Check for a winner and delcare the winner if their is one
+  >> Check if all spaces are occupied if so declare a tie
+  >> If neither occur move to the next players turn
 
 
-  
-  >> First player selects an avaiable square
-  >> Square changes to the X sybmol
-  >> Second player picks an available square
-  >> Sqaure changes to the O sybmol
-  Player cannot select a space already ocupied by the other player
+
 
 A player wins by owning 3 spaces that form a line, inclduing diagonals  
