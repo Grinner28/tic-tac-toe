@@ -1,10 +1,10 @@
 module Messages
   def display_intro
-    puts "Lets play tic-tac-toe"
+  "Lets play tic-tac-toe"
   end
 
   def display_how_many_players
-    "How many human players?"
+    "Are you playing with one or two human players?"
   end
 
   def display_select

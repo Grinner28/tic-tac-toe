@@ -1,4 +1,4 @@
-class Player
+class HumanPlayer
   attr_reader :name
   attr_accessor :symbol
 

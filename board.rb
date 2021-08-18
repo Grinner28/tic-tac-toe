@@ -1,8 +1,14 @@
+require_relative 'messages'
+
 class Board
   attr_accessor :board
 
+  include Messages
+
   def initialize
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    puts display_intro
+    display_board
   end
 
   def display_board
