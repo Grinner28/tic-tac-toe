@@ -11,7 +11,20 @@ class Setup
 
   def create_players
     puts display_how_many_players
-    gets.chomp
+    case gets.chomp 
+    when '2'
+      puts display_ask_name
+      HumanPlayer.new
+      puts display_ask_name
+      HumanPlayer.new
+    when '1'
+      puts display_ask_name
+      HumanPlayer.new
+      ComputerPlayer.new
+    else
+      puts 'Invalid input please try again'
+      create_players
+    end
   end
 end
 
