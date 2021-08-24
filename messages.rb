@@ -8,7 +8,7 @@ module Messages
   end
 
   def display_ask_name
-    'What is your name?'
+    'Plese enter your name'
   end
 
   def display_select

@@ -2,33 +2,49 @@ require_relative 'board'
 require_relative 'players'
 require_relative 'messages'
 
-class Setup
+class Game
+
+  attr_reader :player1, :player2, :board, :currentplayer
+
   include Messages
+
   def initialize
-    Board.new
-    create_players
+    @board = Board.new
+    @player1 = nil
+    @player2 = nil
+    @currentplayer = nil
+    puts display_how_many_players
+    players
+    selectfirstplayer
   end
 
-  def create_players
-    puts display_how_many_players
-    case gets.chomp 
+  def players
+    case gets.chomp
     when '2'
-      puts display_ask_name
-      HumanPlayer.new
-      puts display_ask_name
-      HumanPlayer.new
+      @player1 = HumanPlayer.new
+      @player2 = HumanPlayer.new
     when '1'
-      puts display_ask_name
-      HumanPlayer.new
-      ComputerPlayer.new
+      @player1 = HumanPlayer.new
+      @player2 = ComputerPlayer.new
     else
       puts 'Invalid input please try again'
-      create_players
+      players
+    end
+  end
+
+  def selectfirstplayer
+    if rand(1..2) == 2
+      player1.symbol = 'O'
+      player2.symbol = 'X'
+      @currentplayer = player2
+    else
+      @currentplayer = player1
     end
   end
 end
+game = Game.new
 
-Setup.new
+puts game.currentplayer.name
 
 # Inital setup
 # Display a welcome message

@@ -1,21 +1,24 @@
+require_relative 'messages'
+
 class HumanPlayer
-  attr_reader :name, :player_number
+  attr_reader :name
   attr_accessor :symbol
 
-  @@number_of_players = 1
-  def initialize()
+  include Messages
+
+  def initialize
+    puts display_ask_name
     @name = gets.chomp
-    @symbol = symbol
-    @player_number = @@number_of_players
-    @@number_of_players +=1
+    @symbol = ''
   end
 end
 
 class ComputerPlayer
+  attr_reader :name
   attr_accessor :symbol
 
   def initialize
     @name = 'computer'
-    @symbol = symbol
+    @symbol = ''
   end
 end

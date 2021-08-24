@@ -4,7 +4,6 @@ class Board
   attr_accessor :board
 
   include Messages
-
   def initialize
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     puts display_intro
@@ -21,15 +20,14 @@ class Board
     puts
   end
 
-def win
-  @win = [[0, 1, 2],
-          [0, 3, 6],
-          [0, 4, 8],
-          [1, 4, 7],
-          [2, 5, 8],
-          [2, 4, 6],
-          [3, 4, 5],
-          [6, 7, 8]]
-end
-
+  def win
+    @win = [[0, 1, 2],
+            [0, 3, 6],
+            [0, 4, 8],
+            [1, 4, 7],
+            [2, 5, 8],
+            [2, 4, 6],
+            [3, 4, 5],
+            [6, 7, 8]]
+  end
 end
