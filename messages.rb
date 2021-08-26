@@ -11,20 +11,20 @@ module Messages
     'Plese enter your name'
   end
 
+  def display_current_player
+    "Current player is #{@currentplayer.name}."
+  end
+
   def display_select
-    'Please select a available space'
+    "#{@currentplayer.name} please select a available space"
   end
 
   def display_select_error
-    'That space is already taken. Please select an available splace'
+    'That space is already taken. Please select an available space'
   end
 
   def display_win
-    'Well done, you win'
-  end
-
-  def display_lose
-    'Sorry you lose. Better luck next time'
+    "Well done #{@currentplayer}, you win"
   end
 
   def display_tie
@@ -32,6 +32,10 @@ module Messages
   end
 
   def display_replay
-    'Would you like to play again'
+    'Would you like to play again?'
+  end
+
+  def display_invalid_input
+    'Invalid input please try again'
   end
 end
