@@ -16,7 +16,7 @@ module Messages
   end
 
   def display_select
-    "#{@currentplayer.name} please select a available space"
+    "#{@currentplayer.name} please select an available space"
   end
 
   def display_select_error
@@ -24,7 +24,7 @@ module Messages
   end
 
   def display_win
-    "Well done #{@currentplayer}, you win"
+    "Well done #{@currentplayer.name}, you win"
   end
 
   def display_tie
@@ -37,5 +37,9 @@ module Messages
 
   def display_invalid_input
     'Invalid input please try again'
+  end
+
+  def display_playagain
+    "Would you like to play again? \nPlease enter yes or no"
   end
 end

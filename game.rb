@@ -1,7 +1,7 @@
 require_relative 'board'
 require_relative 'players'
 require_relative 'messages'
-require 'pry-byebug'
+
 class Game
   attr_reader :player1, :player2, :board, :currentplayer, :selection
 
@@ -46,7 +46,11 @@ class Game
   end
 
   def playgame
-    move
+    until check_for_game_end
+      move
+      switch_current_player
+    end
+    newgame
   end
 
   def move
@@ -57,36 +61,52 @@ class Game
   end
 
   def check_if_move_valid(selection)
-
-    binding.pry
-    
-    case selection
-    when selection >= 9 || selection.negative?
+    if selection >= 9 || selection.negative?
       puts display_invalid_input
-    when !board.board_array[selection].is_a?(Integer)
+    elsif !board.board_array[selection].is_a?(Integer)
       puts display_select_error
     else
-      puts 'Selection valid'
-      move
+      update_board(selection)
+    end
+  end
+
+  def update_board(selection)
+    board.board_array[selection] = currentplayer.symbol
+    puts board.display_board
+  end
+
+  def switch_current_player
+    if @currentplayer == player1
+      @currentplayer = player2
+    else
+      @currentplayer = player1
+    end
+  end
+
+  def check_for_game_end
+    if board.win.any? { |state| [board.board_array[state[0]], board.board_array[state[1]], board.board_array[state[2]]].uniq.length == 1 }
+      puts display_win
+      true
+    elsif board.board_array.uniq.length == 2
+      puts display_tie
+      true
+    else
+      false
+    end
+  end
+
+  def newgame
+    puts display_playagain
+    case gets.chomp.downcase
+    when 'yes'
+      Game.new
+    when 'no'
+      puts 'Goodbye'
+    else
+      puts display_invalid_input
+      newgame
     end
   end
 end
 
 Game.new
-
-# Playing the game
-# Promt current player to please select an available space by entering a number corresponding to that square
-# Check that space is not already occupied
-# if so request a differnt space
-# if not assign symbol of current player to that space in the board array
-# refersh board display show update game state
-# if round is >= 5 check if the selection is a winning selection
-# if round is <5 change current player to other player
-# if so indicate that current player is the winner
-# promt for a rematch
-# if no winner check if round == 10 and promt that match is a tie
-# promt for a rematch
-# if not switch current player to other player and continue game
-
-#Checking for a winner
-# A player wins by owning 3 spaces that form a line, inclduing diagonals  

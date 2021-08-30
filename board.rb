@@ -1,7 +1,7 @@
 require_relative 'messages'
 
 class Board
-  attr_accessor :board_array
+  attr_accessor :board_array, :win_states
 
   include Messages
   def initialize
@@ -20,7 +20,7 @@ class Board
   end
 
   def win
-    @win = [[0, 1, 2],
+    win_states = [[0, 1, 2],
             [0, 3, 6],
             [0, 4, 8],
             [1, 4, 7],
@@ -28,31 +28,5 @@ class Board
             [2, 4, 6],
             [3, 4, 5],
             [6, 7, 8]]
-  end
-end
-
-class Move
-  attr_reader :selection
-
-  include Messages
-
-  def initialize(selection)
-    puts display_current_player
-    puts display_select
-    @selection = gets.chomp.to_i - 1
-    check_if_selection_valid
-  end
-
-  def check_if_selection_valid
-    case selection
-    when selection > 8 || selection.negitive?
-      puts display_invalid_input
-      player_selection
-    when !board.board_array[selection].is_a?(Integer)
-      puts display_select_error
-      player_selection
-    else
-      add_selection_to_grid
-    end
   end
 end
