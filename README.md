@@ -1,3 +1,5 @@
+[![Run on Repl.it](https://repl.it/badge/github/Grinner28/tic-tac-toe)](https://repl.it/github/Grinner28/tic-tac-toe)
+
 >> tic-tac-toe
 
 This is an Odin Project to creat a tic tac toe game using Ruby that runs in terminal
