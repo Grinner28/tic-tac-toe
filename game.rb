@@ -1,7 +1,6 @@
 require_relative 'board'
 require_relative 'players'
 require_relative 'messages'
-require 'pry-byebug'
 
 class Game
   attr_reader :player1, :player2, :board, :currentplayer, :selection
