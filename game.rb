@@ -1,6 +1,7 @@
 require_relative 'board'
 require_relative 'players'
 require_relative 'messages'
+require 'pry-byebug'
 
 class Game
   attr_reader :player1, :player2, :board, :currentplayer, :selection
@@ -46,7 +47,7 @@ class Game
   end
 
   def playgame
-    until check_for_game_end
+    until game_end
       move
       switch_current_player
     end
@@ -55,16 +56,29 @@ class Game
 
   def move
     puts display_current_player
+    if currentplayer.is_a?(ComputerPlayer)
+      selection = computermove
+      update_board(selection)
+    else
     puts display_select
     selection = gets.chomp.to_i - 1
     check_if_move_valid(selection)
+    end
+  end
+
+  def computermove
+    currentplayer.moves.keep_if { |move| board.board_array.include?(move + 1) }
+    p currentplayer.moves
+    currentplayer.moves[0]
   end
 
   def check_if_move_valid(selection)
     if selection >= 9 || selection.negative?
       puts display_invalid_input
+      move
     elsif !board.board_array[selection].is_a?(Integer)
       puts display_select_error
+      move
     else
       update_board(selection)
     end
@@ -83,8 +97,9 @@ class Game
     end
   end
 
-  def check_for_game_end
+  def game_end
     if board.win.any? { |state| [board.board_array[state[0]], board.board_array[state[1]], board.board_array[state[2]]].uniq.length == 1 }
+      switch_current_player
       puts display_win
       true
     elsif board.board_array.uniq.length == 2

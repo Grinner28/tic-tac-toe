@@ -15,10 +15,11 @@ end
 
 class ComputerPlayer
   attr_reader :name
-  attr_accessor :symbol
+  attr_accessor :symbol, :moves
 
   def initialize
     @name = 'computer'
     @symbol = ''
+    @moves = [4, 0, 8, 2, 6, 3, 5, 1, 7]
   end
 end
